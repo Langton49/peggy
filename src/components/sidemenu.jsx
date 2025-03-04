@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { Link } from "react-router-dom";
 import "../styles/sidemenu.css";
 
 const SideMenu = () => {
@@ -12,11 +13,12 @@ const SideMenu = () => {
           </div>
           <nav>
             <ul>
-              <li>#</li>
-              <li>#</li>
-              <li>#</li>
-              <li>#</li>
+            <li>
+                <Link className="link" to="/DailyTasks">Schedule Today's Tasks</Link>
+                </li>
             </ul>
+            
+              
           </nav>
         </aside>
       );

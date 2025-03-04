@@ -89,3 +89,12 @@
     background-color: #FFD700;
     color: #000000;
   }
+
+  nav ul li a {
+    color: #333;
+    text-decoration: none;
+  }
+
+  nav ul li a:hover {
+    color: #000000;
+  }

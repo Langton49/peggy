@@ -1,8 +1,8 @@
 import React from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import Home from "./components/Home";
+import Home from "./pages/Home";
 import SideMenu from "./components/sidemenu";
-import TodoSchedule from "./components/todoschedule";
+import CreateDaySchedule from "./pages/createDaySchedule";
 import "./styles/App.css";
 
 function App() {
@@ -11,7 +11,7 @@ function App() {
     <div className="App">
         <Routes>
           <Route path="/" element={<Home/>} />
-          <Route path="/DailyTasks" element={<TodoSchedule/>} />
+          <Route path="/createDaySchedule" element={<CreateDaySchedule/>} />
         </Routes>
       <SideMenu />
     </div>

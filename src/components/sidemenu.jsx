@@ -14,7 +14,6 @@ const SideMenu = () => {
           <nav>
             <ul>
             <li>
-                <Link className="link" to="/DailyTasks">Schedule Today's Tasks</Link>
                 </li>
             </ul>
             

@@ -1,0 +1,14 @@
+.dayTimes {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 0 0 0 50px;
+    border: 2px solid #FFD700;
+  }
+  
+  .dayTimes table {
+      border-collapse: separate;
+      border-spacing: 5px;
+      width: 100%;
+    }
+    

@@ -1,14 +1,14 @@
 .dayTimes {
     display: flex;
-    justify-content: space-between;
+    flex-direction: row;
+    justify-content: center;
     align-items: center;
-    margin: 0 0 0 50px;
-    border: 2px solid #FFD700;
-  }
+}
+
+.dayTimes div{
+  height: auto;
+  width: auto;
+  margin: 5px;
+  font-size: 0.95vw;
+}
   
-  .dayTimes table {
-      border-collapse: separate;
-      border-spacing: 5px;
-      width: 100%;
-    }
-    

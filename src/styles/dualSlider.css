@@ -1,10 +1,7 @@
 .dual-slider{
     display: flex;
     flex-direction: column;
-    margin: 20px;
     align-items: center;
-    border: 2px solid #FFD700;
-    width: 100%;
 }
 
 .slider{
@@ -16,7 +13,7 @@
     position: relative;
     width: 100%;
     height: 10px;
-    background-color: aqua;
+    background: linear-gradient(90deg, #6ce151, #FFD700);
     border-radius: 6px;
 }
 
@@ -31,9 +28,9 @@
 }
 
 .slider__thumb.left {
-    background-color: red;
+    background-color: #6ce151;
 }
 
 .slider__thumb.right {
-    background-color: blue;
+    background-color: #FFD700;
 }

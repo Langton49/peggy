@@ -8,6 +8,10 @@ class BackendInterface {
     async login(email, password) {
         throw new Error("Not implemented");
     }
+
+    async createTask(taskTitle, taskDesc, priority, recurring) {
+        throw new Error("Not implemented");
+    }
 }
 
 class SupabaseInterface extends BackendInterface {
@@ -55,6 +59,24 @@ class SupabaseInterface extends BackendInterface {
         if (error) {
             return { success: false, message: error.message }
         };
+        return { success: true };
+    }
+
+    async createTask(taskTitle, taskDesc, priority, recurring) {
+        const { data, error } = await this.supabase.from('tasks')
+            .insert([
+                {
+                    task_title: taskTitle,
+                    task_desc: taskDesc,
+                    priority: priority,
+                    recurring: recurring,
+                },
+            ]);
+
+        if (error) {
+            return { success: false, message: error.message }
+        }
+
         return { success: true };
     }
 }

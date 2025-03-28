@@ -62,16 +62,32 @@ class SupabaseInterface extends BackendInterface {
         return { success: true };
     }
 
-    async createTask(taskTitle, taskDesc, priority, recurring) {
+    async createTask(taskTitle, taskDesc, day, f_time, t_time, priority, recurring, recurrance_start, recurrance_end) {
+        if (recurring && !recurrance_start) {
+            return {
+                success: false,
+                message: 'Recurrence dates are required for recurring tasks'
+            };
+        }
+
+        const taskData = {
+            task_title: taskTitle,
+            task_desc: taskDesc,
+            priority: priority,
+            recurring: recurring,
+            task_day: day,
+            from_time: f_time,
+            to_time: t_time,
+        }
+
+        console.log(taskData);
+
+        if (recurring) {
+            taskData.recurrance_start_date = recurrance_start;
+            taskData.recurrance_end_date = recurrance_end;
+        }
         const { data, error } = await this.supabase.from('tasks')
-            .insert([
-                {
-                    task_title: taskTitle,
-                    task_desc: taskDesc,
-                    priority: priority,
-                    recurring: recurring,
-                },
-            ]);
+            .insert([taskData]);
 
         if (error) {
             return { success: false, message: error.message }

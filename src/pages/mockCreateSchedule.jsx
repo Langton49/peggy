@@ -10,7 +10,9 @@ const DraftCreateSchedule = () => {
         t_time: '',
         description: '',
         priority: '',
-        recurring: false
+        recurring: false,
+        recurrance_start: '',
+        recurrance_end: ''
     })
 
     const handleChange = (e) => {
@@ -23,7 +25,17 @@ const DraftCreateSchedule = () => {
 
     const submitData = (e) => {
         e.preventDefault();
-        supabase.createTask(formData.name, formData.description, formData.priority, formData.recurring)
+        supabase.createTask(formData.name,
+            formData.description,
+            formData.day,
+            formData.f_time,
+            formData.t_time,
+            formData.priority,
+            formData.recurring,
+            formData.recurrance_start,
+            formData.recurrance_end
+        )
+
             .then(result => {
                 if (result.success) {
                     console.log("Success")
@@ -47,7 +59,7 @@ const DraftCreateSchedule = () => {
                 </div>
                 <div>
                     <label htmlFor="day">Day: </label>
-                    <input type="text" name="day" id="day" value={formData.day} onChange={handleChange} />
+                    <input type="date" name="day" id="day" value={formData.day} onChange={handleChange} />
                 </div>
                 <div>
                     <label htmlFor="f_time">From: </label>
@@ -74,8 +86,21 @@ const DraftCreateSchedule = () => {
                 </div>
                 <div>
                     <label htmlFor="recurring">Recurring: </label>
-                    <input type="checkbox" id="recurring" name="recurring" />
+                    <input type="checkbox" id="recurring" name="recurring" checked={formData.recurring} onChange={(e) => setFormData(prev => ({
+                        ...prev,
+                        recurring: e.target.checked
+                    }))} />
                 </div>
+                {formData.recurring && <div>
+                    <div><label htmlFor="recurrance_start">Start Date: </label>
+                        <input type="date" name="recurrance_start" id="recurrance_start" value={formData.recurrance_start} onChange={handleChange} />
+                    </div>
+                    <div>
+                        <label htmlFor="recurrance_end">End Date: </label>
+                        <input type="date" name="recurrance_end" id="recurrance_end" value={formData.recurrance_end} onChange={handleChange} />
+                    </div>
+
+                </div>}
                 <button type="submit" onClick={submitData}>Create Task</button>
             </form >
         </div >
